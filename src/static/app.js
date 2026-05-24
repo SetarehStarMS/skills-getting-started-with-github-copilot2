@@ -122,7 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   activitiesList.addEventListener("click", async (event) => {
-    const deleteButton = event.target.closest(".participant-delete");
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const deleteButton = target.closest(".participant-delete");
 
     if (!deleteButton) {
       return;
